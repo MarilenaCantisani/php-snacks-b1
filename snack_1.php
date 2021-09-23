@@ -6,24 +6,17 @@ Stampare i numeri in pagina. -->
 <?php
 //// Function that returns a random number
 function get_random_number() {
-    $random_number = rand(0, 100);
-    echo $random_number ."<br/>"; 
-    return $random_number;   
+    return  rand(0, 100);   
 }
 //* Starting array
-$random_array= [];
-//* For cycle to get 15 random numbers
-for($i = 0; $i < 15; $i++) {
-    //* Verify the presence of the random number in the number array
-    if(!in_array(get_random_number(), $random_array)) {
-        $random_array[] = get_random_number();
-    };   
+
+$random_numbers= [];
+//* While cycle to get 15 random numbers
+while(count($random_numbers) < 15) {
+    $number = get_random_number();
+    //* Verify the presence of the random number in the number array and add it
+    if(!in_array($number, $random_numbers)) $random_numbers[] = $number;
 }
-var_dump($random_array);
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +28,12 @@ var_dump($random_array);
     <title>SNACK 1</title>
 </head>
 <body>
-
+    <div>
+        <ul>
+            <?php foreach($random_numbers as $random_number) : ?>
+                <li><?= $random_number ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
 </body>
 </html>
