@@ -28,7 +28,10 @@ $students = [
         "grades" => [8, 8, 6, 7, 4, 8, 3, 7, 6]
     ],
 ];
-var_dump($students);
+//// Function that returns an average 
+function get_average($sum, $tot) {
+    return $sum / $tot;
+};
 
 ?>
 
@@ -41,7 +44,19 @@ var_dump($students);
     <title>SNACK BONUS</title>
 </head>
 <body>
-    
+    <div>
+        <?php foreach($students as $student) : ?>
+        <ul>
+            <li><?= $student["name"]?> <?= $student["lastname"]?> </li>
+            <li>Media voti: 
+                <?php    
+                 $average = get_average(array_sum($student["grades"]), count($student["grades"]));     
+                 echo (ceil($average)); 
+                ?>
+            </li>
+        </ul>
+        <?php endforeach; ?>
+    </div>  
 </body>
 </html>
 
